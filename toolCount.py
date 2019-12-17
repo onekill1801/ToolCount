@@ -28,7 +28,7 @@ def Create_Sheet_New(filename,eventList,deviceList):
 		if len(nameSheet) > 31:
 			nameSheet = nameSheet[0:31]
 		wb.create_sheet(nameSheet) # Sheet Name
-		ws = wb.worksheets[index+3] 		   # Sheet Index
+		ws = wb.worksheets[index+2] 		   # Sheet Index
 		listDevice_OneEvent = deviceList[index]
 		SampleFormOne(ws)
 		for x in range(0,len(listDevice_OneEvent)):
@@ -48,12 +48,25 @@ def EventCount(filename, eventList):
 	listEventName = []
 	for i in range(0,len(eventList)):
 		tempList = []
-		for r in range(1,sheet.nrows):
-			s_value = sheet.cell_value(r,2)
-			if s_value == eventList[i] and sheet.cell_value(r,5) != "Managed devices":
-				tempList.append([s_value,sheet.cell_value(r,3),sheet.cell_value(r,5),sheet.cell_value(r,6),sheet.cell_value(r,7),sheet.cell_value(r,8),sheet.cell_value(r,9)])
+		if eventList[i] == "Network attack detected" or eventList[i] == "Disinfection impossible" or eventList[i] == "Malicious object detected" :
+			DeviceCountSpecial(sheet,eventList[i],tempList)
+		else:
+			DeviceCount(sheet,eventList[i],tempList)
 		listEventName.append(tempList)
 	return listEventName
+
+def DeviceCountSpecial(sheet,eventListName,tempList):
+	for r in range(1,sheet.nrows):
+		s_value = sheet.cell_value(r,2)
+		if s_value == eventListName and sheet.cell_value(r,5) != "Managed devices":
+			tempList.append([s_value,sheet.cell_value(r,3),sheet.cell_value(r,5),sheet.cell_value(r,6),sheet.cell_value(r,7),sheet.cell_value(r,8),sheet.cell_value(r,9),"id"])
+
+def DeviceCount(sheet,eventListName,tempList):
+	for r in range(1,sheet.nrows):
+		s_value = sheet.cell_value(r,2)
+		if s_value == eventListName and sheet.cell_value(r,5) != "Managed devices":
+			tempList.append([s_value,sheet.cell_value(r,3),sheet.cell_value(r,5),sheet.cell_value(r,6),sheet.cell_value(r,7),sheet.cell_value(r,8),sheet.cell_value(r,9)])
+		
 
 def EventList(filename):
 	loc = (filename) 
@@ -77,21 +90,18 @@ def EventList(filename):
 def sortEventList(eventList):
 	j = 0
 	for i in range(0,len(eventList)):
-		# 	Network attack detected , Malicious object detected ,Disinfection impossible
 		if eventList[i] == "Network attack detected":
 			temp = eventList[j]
 			eventList[j] = eventList[i]
 			eventList[i] = temp
 			j=j+1
 	for i in range(0,len(eventList)):
-		# 	Network attack detected , Malicious object detected ,Disinfection impossible
 		if eventList[i] == eventList[i] == "Malicious object detected":
 			temp = eventList[j]
 			eventList[j] = eventList[i]
 			eventList[i] = temp
 			j=j+1
 	for i in range(0,len(eventList)):
-		# 	Network attack detected , Malicious object detected ,Disinfection impossible
 		if eventList[i] == eventList[i] == "Disinfection impossible":
 			temp = eventList[j]
 			eventList[j] = eventList[i]
@@ -106,18 +116,17 @@ def main(filename):
 	# print(eventList[0])
 	deviceList = EventCount(filename,eventList)
 	# print(deviceList)
-	# print(deviceList[10])
-	Create_Sheet_New(filename,eventList,deviceList)
+	# print(len(deviceList[0][0]))
+	# print(deviceList[0][0][5])
+	# Create_Sheet_New(filename,eventList,deviceList)
 
 if __name__== "__main__":
 	print("Library needs to be installed: xlrd, openpyxl.")
 	print("Enter filename (no write .xlsx) : (Only run filetype .xlsx)")
 	# fileName=input() 
-	fileName = "E:\\VNPT Security Inter\\ALL\\12-17"
+	fileName = "E:\\VNPT Security Inter\\ALL\\ToolCount\\12-19"
 	fileName = fileName + ".xlsx"
 	start_time = time.time()
-	# print(fileName)
-	# EventList(fileName)
 	main(fileName)
 	end_time = time.time()
 	print("Time : ", (end_time - start_time), "s")
