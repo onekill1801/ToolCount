@@ -226,6 +226,7 @@ def main(filename):
 	# print(len(deviceList[0][0]))
 	# print(deviceList[0][0][5])
 	Create_Sheet_New(filename,eventList,deviceList)
+	function(filename)
 	print("3")
 
 
