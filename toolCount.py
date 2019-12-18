@@ -31,7 +31,126 @@ def SampleForm(ws,listDevice_OneEvent,sheet):
 		ws.cell(x+2,6).value = listDevice_OneEvent[x][5]
 		ws.cell(x+2,7).value = listDevice_OneEvent[x][6]
 
-def SampleFormOne(ws,listDevice_OneEvent,sheet):
+# "Network attack detected", "Disinfection impossible", "Malicious object detected" , "Object disinfected"
+
+def SampleFormObject(ws,listDevice_OneEvent,sheet):
+	ws.cell(1,1).value = "Event"
+	ws.cell(1,2).value = "Detected on"
+	ws.cell(1,3).value = "Group"
+	ws.cell(1,4).value = "Device"
+	ws.cell(1,5).value = "Task"
+	ws.cell(1,6).value = "Description"
+	ws.cell(1,7).value = "IP address"
+	ws.cell(1,8).value = "Disinfected"
+	ws.cell(1,9).value = "User"
+	ws.cell(1,10).value = "Object"
+	ws.cell(1,11).value = "Hash"
+
+	big_red_text = Font(bold=True,color=colors.RED, size=10)
+	sheet["A1"].font = big_red_text
+	sheet["B1"].font = big_red_text
+	sheet["C1"].font = big_red_text
+	sheet["D1"].font = big_red_text
+	sheet["E1"].font = big_red_text
+	sheet["F1"].font = big_red_text
+	sheet["G1"].font = big_red_text
+	sheet["H1"].font = big_red_text
+	sheet["I1"].font = big_red_text
+	sheet["J1"].font = big_red_text
+	sheet["K1"].font = big_red_text
+
+	for x in range(0,len(listDevice_OneEvent)):
+		ws.cell(x+2,1).value = listDevice_OneEvent[x][0]
+		ws.cell(x+2,2).value = listDevice_OneEvent[x][1]
+		ws.cell(x+2,3).value = listDevice_OneEvent[x][2]
+		ws.cell(x+2,4).value = listDevice_OneEvent[x][3]
+		ws.cell(x+2,5).value = listDevice_OneEvent[x][4]
+		ws.cell(x+2,6).value = listDevice_OneEvent[x][5]
+		ws.cell(x+2,7).value = listDevice_OneEvent[x][6]
+		ws.cell(x+2,8).value = getEvent(listDevice_OneEvent[x][5],"Disinfected:")
+		ws.cell(x+2,9).value = getUser(listDevice_OneEvent[x][5])
+		ws.cell(x+2,10).value = getObject(listDevice_OneEvent[x][5])
+		ws.cell(x+2,11).value = getHash(listDevice_OneEvent[x][5])
+
+def SampleFormDisinfection(ws,listDevice_OneEvent,sheet):
+	ws.cell(1,1).value = "Event"
+	ws.cell(1,2).value = "Detected on"
+	ws.cell(1,3).value = "Group"
+	ws.cell(1,4).value = "Device"
+	ws.cell(1,5).value = "Task"
+	ws.cell(1,6).value = "Description"
+	ws.cell(1,7).value = "IP address"
+	ws.cell(1,8).value = "Untreated:"
+	ws.cell(1,9).value = "User"
+	ws.cell(1,10).value = "Object"
+	ws.cell(1,11).value = "Hash"
+
+	big_red_text = Font(bold=True,color=colors.RED, size=10)
+	sheet["A1"].font = big_red_text
+	sheet["B1"].font = big_red_text
+	sheet["C1"].font = big_red_text
+	sheet["D1"].font = big_red_text
+	sheet["E1"].font = big_red_text
+	sheet["F1"].font = big_red_text
+	sheet["G1"].font = big_red_text
+	sheet["H1"].font = big_red_text
+	sheet["I1"].font = big_red_text
+	sheet["J1"].font = big_red_text
+	sheet["K1"].font = big_red_text
+
+	for x in range(0,len(listDevice_OneEvent)):
+		ws.cell(x+2,1).value = listDevice_OneEvent[x][0]
+		ws.cell(x+2,2).value = listDevice_OneEvent[x][1]
+		ws.cell(x+2,3).value = listDevice_OneEvent[x][2]
+		ws.cell(x+2,4).value = listDevice_OneEvent[x][3]
+		ws.cell(x+2,5).value = listDevice_OneEvent[x][4]
+		ws.cell(x+2,6).value = listDevice_OneEvent[x][5]
+		ws.cell(x+2,7).value = listDevice_OneEvent[x][6]
+		ws.cell(x+2,8).value = getEvent(listDevice_OneEvent[x][5],"Untreated:")
+		ws.cell(x+2,9).value = getUser(listDevice_OneEvent[x][5])
+		ws.cell(x+2,10).value = getObject(listDevice_OneEvent[x][5])
+		ws.cell(x+2,11).value = getHash(listDevice_OneEvent[x][5])
+
+def SampleFormDeteted(ws,listDevice_OneEvent,sheet):
+	ws.cell(1,1).value = "Event"
+	ws.cell(1,2).value = "Detected on"
+	ws.cell(1,3).value = "Group"
+	ws.cell(1,4).value = "Device"
+	ws.cell(1,5).value = "Task"
+	ws.cell(1,6).value = "Description"
+	ws.cell(1,7).value = "IP address"
+	ws.cell(1,8).value = "Detected"
+	ws.cell(1,9).value = "User"
+	ws.cell(1,10).value = "Object"
+	ws.cell(1,11).value = "Hash"
+
+	big_red_text = Font(bold=True,color=colors.RED, size=10)
+	sheet["A1"].font = big_red_text
+	sheet["B1"].font = big_red_text
+	sheet["C1"].font = big_red_text
+	sheet["D1"].font = big_red_text
+	sheet["E1"].font = big_red_text
+	sheet["F1"].font = big_red_text
+	sheet["G1"].font = big_red_text
+	sheet["H1"].font = big_red_text
+	sheet["I1"].font = big_red_text
+	sheet["J1"].font = big_red_text
+	sheet["K1"].font = big_red_text
+
+	for x in range(0,len(listDevice_OneEvent)):
+		ws.cell(x+2,1).value = listDevice_OneEvent[x][0]
+		ws.cell(x+2,2).value = listDevice_OneEvent[x][1]
+		ws.cell(x+2,3).value = listDevice_OneEvent[x][2]
+		ws.cell(x+2,4).value = listDevice_OneEvent[x][3]
+		ws.cell(x+2,5).value = listDevice_OneEvent[x][4]
+		ws.cell(x+2,6).value = listDevice_OneEvent[x][5]
+		ws.cell(x+2,7).value = listDevice_OneEvent[x][6]
+		ws.cell(x+2,8).value = getEvent(listDevice_OneEvent[x][5],"Detected:")
+		ws.cell(x+2,9).value = getUser(listDevice_OneEvent[x][5])
+		ws.cell(x+2,10).value = getObject(listDevice_OneEvent[x][5])
+		ws.cell(x+2,11).value = getHash(listDevice_OneEvent[x][5])
+
+def SampleFormNetwork(ws,listDevice_OneEvent,sheet):
 	ws.cell(1,1).value = "Event"
 	ws.cell(1,2).value = "Detected on"
 	ws.cell(1,3).value = "Group"
@@ -61,6 +180,41 @@ def SampleFormOne(ws,listDevice_OneEvent,sheet):
 		ws.cell(x+2,7).value = listDevice_OneEvent[x][6]
 		ws.cell(x+2,8).value = getIpAttack(listDevice_OneEvent[x][5])
 
+def getEvent(stringDes,key):
+	start = stringDes.find(key)
+	if start == -1:
+		return ""
+	end0 = stringDes.find("User:")
+	return stringDes[start+len(key):end0].strip()
+
+def getUser(stringDes):
+	key = "User:"
+	start = stringDes.find(key)
+	if start == -1:
+		return ""
+	end0 = stringDes.find("Object:")
+	return stringDes[start+len(key):end0].strip()
+
+def getObject(stringDes):
+	key = "Object:"
+	start = stringDes.find(key)
+	if start == -1:
+		return ""
+	if stringDes.find("Reason:") != -1:
+		end0 = stringDes.find("Reason:")
+	elif stringDes.find("Hash:") != -1:
+		end0 = stringDes.find("Hash:")
+	else:
+		return stringDes[start+len(key):].strip()
+	return stringDes[start+len(key):end0].strip()
+
+def getHash(stringDes):
+	key = "Hash:"
+	start = stringDes.find(key)
+	if start == -1:
+		return ""
+	return stringDes[start+len(key):].strip()
+
 def getIpAttack(stringDes):
 	i_start = stringDes.find('TCP from ')
 	i_end   = stringDes.find("to ")
@@ -69,6 +223,13 @@ def getIpAttack(stringDes):
 	else:
 		result =  stringDes[i_start+9:i_end]
 		return result
+
+def ruleSortGroup(val): 
+    return val[2]  
+
+def sortGroup(list_Group):
+	list_Group.sort(key = ruleSortGroup, reverse = False)
+	return list_Group
 
 def Create_Sheet_New(filename,eventList,deviceList):		
 	wb = openpyxl.load_workbook(filename)
@@ -79,9 +240,16 @@ def Create_Sheet_New(filename,eventList,deviceList):
 		wb.create_sheet(nameSheet) # Sheet Name
 		ws = wb.worksheets[index+2] 		   # Sheet Index
 		listDevice_OneEvent = deviceList[index]
+		listDevice_OneEvent = sortGroup(listDevice_OneEvent)
 		# if eventList[index] == "Network attack detected" or eventList[index] == "Disinfection impossible" or eventList[index] == "Malicious object detected" :
 		if eventList[index] == "Network attack detected":
-			SampleFormOne(ws,listDevice_OneEvent,ws)
+			SampleFormNetwork(ws,listDevice_OneEvent,ws)
+		elif eventList[index] == "Malicious object detected":
+			SampleFormDeteted(ws,listDevice_OneEvent,ws)
+		elif eventList[index] == "Disinfection impossible":
+			SampleFormDisinfection(ws,listDevice_OneEvent,ws)
+		elif eventList[index] == "Object disinfected":
+			SampleFormObject(ws,listDevice_OneEvent,ws)
 		else:
 			SampleForm(ws,listDevice_OneEvent,ws)
 	wb.save(filename)
@@ -104,7 +272,7 @@ def DeviceCountSpecial(sheet,eventListName,tempList):
 	for r in range(1,sheet.nrows):
 		s_value = sheet.cell_value(r,2)
 		if s_value == eventListName and sheet.cell_value(r,5) != "Managed devices":
-			tempList.append([s_value,sheet.cell_value(r,3),sheet.cell_value(r,5),sheet.cell_value(r,6),sheet.cell_value(r,7),sheet.cell_value(r,8),sheet.cell_value(r,9),""])
+			tempList.append([s_value,sheet.cell_value(r,3),sheet.cell_value(r,5),sheet.cell_value(r,6),sheet.cell_value(r,7),sheet.cell_value(r,8),sheet.cell_value(r,9),"","","",""])
 
 def DeviceCount(sheet,eventListName,tempList):
 	for r in range(1,sheet.nrows):
@@ -112,7 +280,6 @@ def DeviceCount(sheet,eventListName,tempList):
 		if s_value == eventListName and sheet.cell_value(r,5) != "Managed devices":
 			tempList.append([s_value,sheet.cell_value(r,3),sheet.cell_value(r,5),sheet.cell_value(r,6),sheet.cell_value(r,7),sheet.cell_value(r,8),sheet.cell_value(r,9)])
 		
-
 def EventList(filename):
 	loc = (filename) 
 	wb = xlrd.open_workbook(loc)
@@ -148,6 +315,12 @@ def sortEventList(eventList):
 			j=j+1
 	for i in range(0,len(eventList)):
 		if eventList[i] == eventList[i] == "Disinfection impossible":
+			temp = eventList[j]
+			eventList[j] = eventList[i]
+			eventList[i] = temp
+			j=j+1
+	for i in range(0,len(eventList)):
+		if eventList[i] == eventList[i] == "Object disinfected":
 			temp = eventList[j]
 			eventList[j] = eventList[i]
 			eventList[i] = temp
@@ -224,17 +397,17 @@ def main(filename):
 	# print(deviceList)
 	print("2...")
 	# print(len(deviceList[0][0]))
-	# print(deviceList[0][0][5])
+	# print(deviceList[0])
 	Create_Sheet_New(filename,eventList,deviceList)
+	print("3...")
 	function(filename)
-	print("3")
+	print("Done!!!")
 
 
 if __name__== "__main__":
 	print("Library needs to be installed: xlrd, openpyxl.")
 	print("Enter filename (no write .xlsx) : (Only run filetype .xlsx)")
-	# fileName=input() 
-	fileName = "E:\\VNPT Security Inter\\ALL\\ToolCount\\12-19"
+	fileName=input() 
 	fileName = fileName + ".xlsx"
 	start_time = time.time()
 	main(fileName)
