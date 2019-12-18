@@ -5,13 +5,14 @@ from openpyxl.styles import Font, Color, Alignment, Border, Side, colors
 from openpyxl.styles import NamedStyle
 
 def SampleForm(ws,listDevice_OneEvent,sheet):
-	ws.cell(1,1).value = "Event"
-	ws.cell(1,2).value = "Detected on"
-	ws.cell(1,3).value = "Group"
-	ws.cell(1,4).value = "Device"
-	ws.cell(1,5).value = "Task"
-	ws.cell(1,6).value = "Description"
-	ws.cell(1,7).value = "IP address"
+	c = -1
+	# ws.cell(1,c+1).value = "Event"
+	ws.cell(1,c+2).value = "Detected on"
+	ws.cell(1,c+3).value = "Group"
+	ws.cell(1,c+4).value = "Device"
+	ws.cell(1,c+5).value = "Task"
+	ws.cell(1,c+6).value = "Description"
+	ws.cell(1,c+7).value = "IP address"
 
 	big_red_text = Font(bold=True,color=colors.RED, size=10)
 	sheet["A1"].font = big_red_text
@@ -20,31 +21,32 @@ def SampleForm(ws,listDevice_OneEvent,sheet):
 	sheet["D1"].font = big_red_text
 	sheet["E1"].font = big_red_text
 	sheet["F1"].font = big_red_text
-	sheet["G1"].font = big_red_text
+	# sheet["G1"].font = big_red_text
 
 	for x in range(0,len(listDevice_OneEvent)):
-		ws.cell(x+2,1).value = listDevice_OneEvent[x][0]
-		ws.cell(x+2,2).value = listDevice_OneEvent[x][1]
-		ws.cell(x+2,3).value = listDevice_OneEvent[x][2]
-		ws.cell(x+2,4).value = listDevice_OneEvent[x][3]
-		ws.cell(x+2,5).value = listDevice_OneEvent[x][4]
-		ws.cell(x+2,6).value = listDevice_OneEvent[x][5]
-		ws.cell(x+2,7).value = listDevice_OneEvent[x][6]
+		# ws.cell(x+2,c+1).value = listDevice_OneEvent[x][0]
+		ws.cell(x+2,c+2).value = listDevice_OneEvent[x][1]
+		ws.cell(x+2,c+3).value = listDevice_OneEvent[x][2]
+		ws.cell(x+2,c+4).value = listDevice_OneEvent[x][3]
+		ws.cell(x+2,c+5).value = listDevice_OneEvent[x][4]
+		ws.cell(x+2,c+6).value = listDevice_OneEvent[x][5]
+		ws.cell(x+2,c+7).value = listDevice_OneEvent[x][6]
 
 # "Network attack detected", "Disinfection impossible", "Malicious object detected" , "Object disinfected"
 
 def SampleFormObject(ws,listDevice_OneEvent,sheet):
-	ws.cell(1,1).value = "Event"
-	ws.cell(1,2).value = "Detected on"
-	ws.cell(1,3).value = "Group"
-	ws.cell(1,4).value = "Device"
-	ws.cell(1,5).value = "Task"
-	ws.cell(1,6).value = "Description"
-	ws.cell(1,7).value = "IP address"
-	ws.cell(1,8).value = "Disinfected"
-	ws.cell(1,9).value = "User"
-	ws.cell(1,10).value = "Object"
-	ws.cell(1,11).value = "Hash"
+	c = -1
+	# ws.cell(1,c+1).value = "Event"
+	ws.cell(1,c+2).value = "Detected on"
+	ws.cell(1,c+3).value = "Group"
+	ws.cell(1,c+4).value = "Device"
+	ws.cell(1,c+5).value = "Task"
+	ws.cell(1,c+6).value = "Description"
+	ws.cell(1,c+7).value = "IP address"
+	ws.cell(1,c+8).value = "Disinfected"
+	ws.cell(1,c+9).value = "User"
+	ws.cell(1,c+10).value = "Object"
+	ws.cell(1,c+11).value = "Hash"
 
 	big_red_text = Font(bold=True,color=colors.RED, size=10)
 	sheet["A1"].font = big_red_text
@@ -57,33 +59,34 @@ def SampleFormObject(ws,listDevice_OneEvent,sheet):
 	sheet["H1"].font = big_red_text
 	sheet["I1"].font = big_red_text
 	sheet["J1"].font = big_red_text
-	sheet["K1"].font = big_red_text
+	# sheet["K1"].font = big_red_text
 
 	for x in range(0,len(listDevice_OneEvent)):
-		ws.cell(x+2,1).value = listDevice_OneEvent[x][0]
-		ws.cell(x+2,2).value = listDevice_OneEvent[x][1]
-		ws.cell(x+2,3).value = listDevice_OneEvent[x][2]
-		ws.cell(x+2,4).value = listDevice_OneEvent[x][3]
-		ws.cell(x+2,5).value = listDevice_OneEvent[x][4]
-		ws.cell(x+2,6).value = listDevice_OneEvent[x][5]
-		ws.cell(x+2,7).value = listDevice_OneEvent[x][6]
-		ws.cell(x+2,8).value = getEvent(listDevice_OneEvent[x][5],"Disinfected:")
-		ws.cell(x+2,9).value = getUser(listDevice_OneEvent[x][5])
-		ws.cell(x+2,10).value = getObject(listDevice_OneEvent[x][5])
-		ws.cell(x+2,11).value = getHash(listDevice_OneEvent[x][5])
+		# ws.cell(x+2,c+1).value = listDevice_OneEvent[x][0]
+		ws.cell(x+2,c+2).value = listDevice_OneEvent[x][1]
+		ws.cell(x+2,c+3).value = listDevice_OneEvent[x][2]
+		ws.cell(x+2,c+4).value = listDevice_OneEvent[x][3]
+		ws.cell(x+2,c+5).value = listDevice_OneEvent[x][4]
+		ws.cell(x+2,c+6).value = listDevice_OneEvent[x][5]
+		ws.cell(x+2,c+7).value = listDevice_OneEvent[x][6]
+		ws.cell(x+2,c+8).value = getEvent(listDevice_OneEvent[x][5],"Disinfected:")
+		ws.cell(x+2,c+9).value = getUser(listDevice_OneEvent[x][5])
+		ws.cell(x+2,c+10).value = getObject(listDevice_OneEvent[x][5])
+		ws.cell(x+2,c+11).value = getHash(listDevice_OneEvent[x][5])
 
 def SampleFormDisinfection(ws,listDevice_OneEvent,sheet):
-	ws.cell(1,1).value = "Event"
-	ws.cell(1,2).value = "Detected on"
-	ws.cell(1,3).value = "Group"
-	ws.cell(1,4).value = "Device"
-	ws.cell(1,5).value = "Task"
-	ws.cell(1,6).value = "Description"
-	ws.cell(1,7).value = "IP address"
-	ws.cell(1,8).value = "Untreated:"
-	ws.cell(1,9).value = "User"
-	ws.cell(1,10).value = "Object"
-	ws.cell(1,11).value = "Hash"
+	c = -1
+	# ws.cell(1,c+1).value = "Event"
+	ws.cell(1,c+2).value = "Detected on"
+	ws.cell(1,c+3).value = "Group"
+	ws.cell(1,c+4).value = "Device"
+	ws.cell(1,c+5).value = "Task"
+	ws.cell(1,c+6).value = "Description"
+	ws.cell(1,c+7).value = "IP address"
+	ws.cell(1,c+8).value = "Untreated:"
+	ws.cell(1,c+9).value = "User"
+	ws.cell(1,c+10).value = "Object"
+	ws.cell(1,c+11).value = "Hash"
 
 	big_red_text = Font(bold=True,color=colors.RED, size=10)
 	sheet["A1"].font = big_red_text
@@ -96,33 +99,34 @@ def SampleFormDisinfection(ws,listDevice_OneEvent,sheet):
 	sheet["H1"].font = big_red_text
 	sheet["I1"].font = big_red_text
 	sheet["J1"].font = big_red_text
-	sheet["K1"].font = big_red_text
+	# sheet["K1"].font = big_red_text
 
 	for x in range(0,len(listDevice_OneEvent)):
-		ws.cell(x+2,1).value = listDevice_OneEvent[x][0]
-		ws.cell(x+2,2).value = listDevice_OneEvent[x][1]
-		ws.cell(x+2,3).value = listDevice_OneEvent[x][2]
-		ws.cell(x+2,4).value = listDevice_OneEvent[x][3]
-		ws.cell(x+2,5).value = listDevice_OneEvent[x][4]
-		ws.cell(x+2,6).value = listDevice_OneEvent[x][5]
-		ws.cell(x+2,7).value = listDevice_OneEvent[x][6]
-		ws.cell(x+2,8).value = getEvent(listDevice_OneEvent[x][5],"Untreated:")
-		ws.cell(x+2,9).value = getUser(listDevice_OneEvent[x][5])
-		ws.cell(x+2,10).value = getObject(listDevice_OneEvent[x][5])
-		ws.cell(x+2,11).value = getHash(listDevice_OneEvent[x][5])
+		# ws.cell(x+2,c+1).value = listDevice_OneEvent[x][0]
+		ws.cell(x+2,c+2).value = listDevice_OneEvent[x][1]
+		ws.cell(x+2,c+3).value = listDevice_OneEvent[x][2]
+		ws.cell(x+2,c+4).value = listDevice_OneEvent[x][3]
+		ws.cell(x+2,c+5).value = listDevice_OneEvent[x][4]
+		ws.cell(x+2,c+6).value = listDevice_OneEvent[x][5]
+		ws.cell(x+2,c+7).value = listDevice_OneEvent[x][6]
+		ws.cell(x+2,c+8).value = getEvent(listDevice_OneEvent[x][5],"Untreated:")
+		ws.cell(x+2,c+9).value = getUser(listDevice_OneEvent[x][5])
+		ws.cell(x+2,c+10).value = getObject(listDevice_OneEvent[x][5])
+		ws.cell(x+2,c+11).value = getHash(listDevice_OneEvent[x][5])
 
 def SampleFormDeteted(ws,listDevice_OneEvent,sheet):
-	ws.cell(1,1).value = "Event"
-	ws.cell(1,2).value = "Detected on"
-	ws.cell(1,3).value = "Group"
-	ws.cell(1,4).value = "Device"
-	ws.cell(1,5).value = "Task"
-	ws.cell(1,6).value = "Description"
-	ws.cell(1,7).value = "IP address"
-	ws.cell(1,8).value = "Detected"
-	ws.cell(1,9).value = "User"
-	ws.cell(1,10).value = "Object"
-	ws.cell(1,11).value = "Hash"
+	c = -1
+	# ws.cell(1,c+1).value = "Event"
+	ws.cell(1,c+2).value = "Detected on"
+	ws.cell(1,c+3).value = "Group"
+	ws.cell(1,c+4).value = "Device"
+	ws.cell(1,c+5).value = "Task"
+	ws.cell(1,c+6).value = "Description"
+	ws.cell(1,c+7).value = "IP address"
+	ws.cell(1,c+8).value = "Detected"
+	ws.cell(1,c+9).value = "User"
+	ws.cell(1,c+10).value = "Object"
+	ws.cell(1,c+11).value = "Hash"
 
 	big_red_text = Font(bold=True,color=colors.RED, size=10)
 	sheet["A1"].font = big_red_text
@@ -135,30 +139,31 @@ def SampleFormDeteted(ws,listDevice_OneEvent,sheet):
 	sheet["H1"].font = big_red_text
 	sheet["I1"].font = big_red_text
 	sheet["J1"].font = big_red_text
-	sheet["K1"].font = big_red_text
+	# sheet["K1"].font = big_red_text
 
 	for x in range(0,len(listDevice_OneEvent)):
-		ws.cell(x+2,1).value = listDevice_OneEvent[x][0]
-		ws.cell(x+2,2).value = listDevice_OneEvent[x][1]
-		ws.cell(x+2,3).value = listDevice_OneEvent[x][2]
-		ws.cell(x+2,4).value = listDevice_OneEvent[x][3]
-		ws.cell(x+2,5).value = listDevice_OneEvent[x][4]
-		ws.cell(x+2,6).value = listDevice_OneEvent[x][5]
-		ws.cell(x+2,7).value = listDevice_OneEvent[x][6]
-		ws.cell(x+2,8).value = getEvent(listDevice_OneEvent[x][5],"Detected:")
-		ws.cell(x+2,9).value = getUser(listDevice_OneEvent[x][5])
-		ws.cell(x+2,10).value = getObject(listDevice_OneEvent[x][5])
-		ws.cell(x+2,11).value = getHash(listDevice_OneEvent[x][5])
+		# ws.cell(x+2c+1).value = listDevice_OneEvent[x][0]
+		ws.cell(x+2,c+2).value = listDevice_OneEvent[x][1]
+		ws.cell(x+2,c+3).value = listDevice_OneEvent[x][2]
+		ws.cell(x+2,c+4).value = listDevice_OneEvent[x][3]
+		ws.cell(x+2,c+5).value = listDevice_OneEvent[x][4]
+		ws.cell(x+2,c+6).value = listDevice_OneEvent[x][5]
+		ws.cell(x+2,c+7).value = listDevice_OneEvent[x][6]
+		ws.cell(x+2,c+8).value = getEvent(listDevice_OneEvent[x][5],"Detected:")
+		ws.cell(x+2,c+9).value = getUser(listDevice_OneEvent[x][5])
+		ws.cell(x+2,c+10).value = getObject(listDevice_OneEvent[x][5])
+		ws.cell(x+2,c+11).value = getHash(listDevice_OneEvent[x][5])
 
 def SampleFormNetwork(ws,listDevice_OneEvent,sheet):
-	ws.cell(1,1).value = "Event"
-	ws.cell(1,2).value = "Detected on"
-	ws.cell(1,3).value = "Group"
-	ws.cell(1,4).value = "Device"
-	ws.cell(1,5).value = "Task"
-	ws.cell(1,6).value = "Description"
-	ws.cell(1,7).value = "IP address"
-	ws.cell(1,8).value = "IP address Attack"
+	c = -1
+	# ws.cell(1,c+1).value = "Event"
+	ws.cell(1,c+2).value = "Detected on"
+	ws.cell(1,c+3).value = "Group"
+	ws.cell(1,c+4).value = "Device"
+	ws.cell(1,c+5).value = "Task"
+	ws.cell(1,c+6).value = "Description"
+	ws.cell(1,c+7).value = "IP address"
+	ws.cell(1,c+8).value = "IP address Attack"
 
 	big_red_text = Font(bold=True,color=colors.RED, size=10)
 	sheet["A1"].font = big_red_text
@@ -168,17 +173,17 @@ def SampleFormNetwork(ws,listDevice_OneEvent,sheet):
 	sheet["E1"].font = big_red_text
 	sheet["F1"].font = big_red_text
 	sheet["G1"].font = big_red_text
-	sheet["H1"].font = big_red_text
+	# sheet["H1"].font = big_red_text
 
 	for x in range(0,len(listDevice_OneEvent)):
-		ws.cell(x+2,1).value = listDevice_OneEvent[x][0]
-		ws.cell(x+2,2).value = listDevice_OneEvent[x][1]
-		ws.cell(x+2,3).value = listDevice_OneEvent[x][2]
-		ws.cell(x+2,4).value = listDevice_OneEvent[x][3]
-		ws.cell(x+2,5).value = listDevice_OneEvent[x][4]
-		ws.cell(x+2,6).value = listDevice_OneEvent[x][5]
-		ws.cell(x+2,7).value = listDevice_OneEvent[x][6]
-		ws.cell(x+2,8).value = getIpAttack(listDevice_OneEvent[x][5])
+		# ws.cell(x+2,c+1).value = listDevice_OneEvent[x][0]
+		ws.cell(x+2,c+2).value = listDevice_OneEvent[x][1]
+		ws.cell(x+2,c+3).value = listDevice_OneEvent[x][2]
+		ws.cell(x+2,c+4).value = listDevice_OneEvent[x][3]
+		ws.cell(x+2,c+5).value = listDevice_OneEvent[x][4]
+		ws.cell(x+2,c+6).value = listDevice_OneEvent[x][5]
+		ws.cell(x+2,c+7).value = listDevice_OneEvent[x][6]
+		ws.cell(x+2,c+8).value = getIpAttack(listDevice_OneEvent[x][5])
 
 def getEvent(stringDes,key):
 	start = stringDes.find(key)
